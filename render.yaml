@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: oopsie-adults-demo
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm ci && npm run build && npm run build:server && npm run vision:setup
+    startCommand: npm run start:production
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_VERSION
+        value: 24.15.0
+      - key: NODE_ENV
+        value: production
+      - key: NPM_CONFIG_PRODUCTION
+        value: "false"
+      - key: HOST
+        value: 0.0.0.0
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: TRUST_PROXY
+        value: "true"
+      - key: VITE_DEMO_MODE
+        value: "true"
+      - key: VISION_MODEL_DIR
+        value: data/models
+      - key: DATABASE_PATH
+        value: data/oopsie.sqlite
+      - key: OMP_NUM_THREADS
+        value: "1"

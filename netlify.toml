@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build:netlify"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24.15.0"
+  NPM_FLAGS = "--include=dev"
+  VITE_DEMO_MODE = "true"

@@ -1,0 +1,47 @@
+{
+  "name": "oopsie",
+  "version": "0.3.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && vite build",
+    "build:netlify": "node scripts/build-netlify.mjs",
+    "build:server": "esbuild server/index.ts --bundle --platform=node --format=esm --packages=external --outfile=build/server.js",
+    "start:production": "node build/server.js",
+    "test": "tsx --test tests/*.test.ts",
+    "vision:setup": "node scripts/setup-vision.mjs"
+  },
+  "dependencies": {
+    "@capacitor/camera": "^7.0.5",
+    "@capacitor/core": "^7.4.0",
+    "@capacitor/ios": "^7.4.0",
+    "@capacitor/local-notifications": "^7.0.0",
+    "@huggingface/transformers": "^4.3.2",
+    "express": "^5.1.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.0",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "esbuild": "^0.28.2",
+    "prettier": "^3.9.10",
+    "tsx": "^4.19.0",
+    "typescript": "~5.7.3",
+    "vite": "^6.1.0"
+  },
+  "overrides": {
+    "glob": "^14.0.2",
+    "minimatch": "^11.0.1"
+  }
+}
